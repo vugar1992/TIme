@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root
+{
+    --genColor: linear-gradient(180deg, rgb(18, 192, 231), rgb(241 38 57));
+    --white: #fff;
+    --black: rgb(0, 0, 0);
+    --font: 'Watch1', 'Watch';
+    --txtShdw: -0.12em .1em .05em var(--black);
+}
+@font-face 
+{
+    font-family: 'Watch';
+    src: url(/public/TickingTimebombBB.ttf);
+}
+@font-face 
+{
+    font-family: 'Watch1';
+    src: url(/public/Digital\ Dismay.otf);
+}
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body 
+{
+    background: var(--genColor);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.wrapper .backUI
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--black);
+    z-index: 1;
+    opacity: .3;
+    transform: scale(0);
+    cursor: pointer;
+}
+.wrapper .btn
+{
+    position: fixed;
+    left: 1rem;
+    top: .7rem;
+    opacity: .5;
+    z-index: 10;
+    transition: .5s;
+}
+.wrapper #btn:checked ~.btn
+{
+    left: 13.5rem;
+    opacity: 1;
+}
+#btn:checked ~label .backUI
+{
+    transform: scale(1);
+}
+.wrapper .btn:hover
+{
+    opacity: 1;
+}
+.wrapper .btn div
+{
+    width: 2.1em;
+    height: 2.1em;
+    background: var(--white);
+    border-radius: .3em;
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+.wrapper .btn div span
+{
+    display: block;
+    width: 1.7em;
+    height: .2em;
+    background: var(--genColor);
+    margin: .39rem .2rem;
+    transition: .5s;
+}
+.wrapper #btn:checked ~.btn div span:nth-child(1)
+{
+    transform: translateY(.6rem) rotate(-50deg);
+}
+.wrapper #btn:checked ~.btn div span:nth-child(2)
+{
+    opacity: 0;
+}
+.wrapper #btn:checked ~.btn div span:nth-child(3)
+{
+    transform: translateY(-.6rem) rotate(50deg);
+}
+.wrapper nav
+{
+    position: fixed;
+    left: -14.4rem;
+    width: 14.4rem;
+    transition: .5s;
+    z-index: 5;
+    height: 100vh;
+    background: var(--white);
+    border-right: 1px var(--black);
+}
+.wrapper #btn:checked ~nav
+{
+    left: 0rem;
+}
+.wrapper nav ul li
+{
+    list-style: none;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid var(--black);
+    line-height: 50px;
+    transition: .4s;
+}
+.wrapper nav ul li:hover
+{
+    box-shadow: 0px 0px 10px 5px var(--genColor);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+.wrapper nav ul li a i
+{
+    font-size: 1em;
+    padding-left: 1rem;
+    width: 2.3em;
+}
+.wrapper nav ul li a
+{
+    display: block;
+    text-decoration: none;
+    font-size: 1.1em;
+    color: var(--black);
+    width: 100%;
+    height: 100%;
+}
+.container
+{
+    max-width: 70rem;
+    max-height: 50vh;
+    padding: 90px 70px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    box-shadow: 10px 3px 160px 10px ;
+}
+.container .hours
+{
+    text-align: center;
+    color: var(--white);
+}
+.container .hours span
+{
+    font-family: var(--font);
+    font-size: 13rem;
+    text-shadow: var(--txtShdw);
+}
+.container .hours .today
+{
+    font-size: 3rem;
+    font-family: var(--font);
+    transform: rotateX(37deg);
+    text-shadow: -.2em 0.2em .07em var(--black);
+}
+.container .stopwatch
+{
+    align-items: center;
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 11rem;
+    text-shadow: var(--txtShdw);
+}
+.container .stopwatch span
+{
+    font-family: var(--font);
+    text-shadow: var(--txtShdw);
+}
+.container .btn button
+{
+    padding: 0.1em 0.5em;
+    margin: 0 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: .1em;
+    box-shadow: 0 0 1em .15em #000000;
+    font-size: 1.7em;
+    font-weight: 600;
+    background: #a3edff;
+    color: #ff6d6d;
+}
+.container .btn button:active
+{
+    transform: scale(0.95);
+    box-shadow: 0 0 .5em .1em #000000;
+}
+.container .btn #pause
+{
+    display: none;
+}
+.timer
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.timer .wrapper
+{
+	display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.select
+{
+	position: relative;
+}
+.select.open .body
+{
+	display: block;
+}
+.select .head
+{
+	border: 1px solid #c0c0c0;
+	width: 8em;
+	padding: .1em;
+	font-size: 1rem;
+	cursor: pointer;
+    background: #ffe0e0;
+}
+.select .head span
+{
+	text-align: center;
+	padding: .5em;
+}
+.select .head div
+{
+	float: right;
+	cursor: pointer;
+}
+.select .body
+{
+	position: absolute;
+	border: 1px solid #c0c0c0;
+	border-top: 0;
+	right: 0;
+	left: 0;
+	font-size: 1rem;
+	line-height: .96em;
+	height: 300px;
+	overflow: auto;
+	display: none;
+    z-index: 50;
+    background: #ffe0e0;
+}
+.select .body div
+{
+	padding: .5em;
+}
+.select .body div:hover
+{
+	background: #7ce0f7;
+	cursor: pointer;
+}
+.container .check
+{
+    position: relative;
+    width: 23em;
+    height: 7em;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container .check input
+{
+    position: relative;
+    height: 40px;
+    width: 90px;
+    outline: none;
+    background: #e6e6e6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    border-radius: 50px;
+    box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.2);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+}
+.container .check input:checked
+{
+    background: #f55e5e;
+}
+.container .check input::before
+{
+    height: 100%;
+    width: 40px;
+    left: 0;
+    position: absolute;
+    content: "";
+    background: linear-gradient(#fff, #f2f2f2, #e6e6e6, #d9d9d9);
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0,0.2);
+    transform: scale(0.85);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.container .check input:checked::before {
+    left: 50px;
+}
+.container .check label::after
+{
+    content: 'Выключен';
+    font-size: 1.5rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+.container .check input:checked ~label::after
+{
+    content: 'Включен';
+    font-size: 1.5rem;
+    color: var(--black);
+}
+.container .countdownn
+{
+    font-size: 11rem;
+    color: var(--white);
+    font-family: var(--font);
+    text-shadow: var(--txtShdw);
+}
+.container .countdownn span
+{
+    color: var(--white);
+    font-family: var(--font);
+    text-shadow: var(--txtShdw);
+} 
+@media screen and (max-width: 1020px)
+{
+    .stopwatchcont
+    {
+        padding: 90px 30px;
+    }
+}
+@media screen and (max-width: 920px)
+{
+    .container
+    {
+        max-width: 31rem;
+    }
+    .wrapper nav
+    {
+        left: -100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .wrapper nav ul
+    {
+        height: 100%;
+    }
+    .wrapper #btn:checked ~nav
+    {
+        left: 0;
+    }
+    .wrapper #btn:checked ~.btn
+    {
+        left: 1rem;
+    }
+    .wrapper nav ul li
+    {
+        border-top: none;
+        border-bottom: none;
+        line-height: 50px;
+    }
+    .wrapper nav ul li a
+    {
+        font-size: 1.5rem;
+        margin: 15px 0 0 0;
+    }
+    .container .hours span
+    {
+        font-size: 9rem;
+    }
+    .container .stopwatch
+    {
+        font-size: 6.5rem;
+    }
+    .stopwatchcont
+    {
+        padding: 90px 70px;
+    }
+    .container .countdownn
+    {
+        font-size: 9rem;
+    }
+}
+@media screen and (max-width: 690px)
+{
+    .wrapper nav ul li
+    {
+        line-height: 80px;
+    }
+    .wrapper nav ul li a
+    {
+        font-size: 1.9rem;
+    }
+    .container .hours span
+    {
+        font-size: 7rem;
+    }
+    .container .hours .today
+    {
+        font-size: 2rem;
+    }
+    .stopwatchcont
+    {
+        padding: 80px 50px;
+    }
+    .container .stopwatch
+    {
+        font-size: 5rem;
+    }
+    .container .btn
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container .btn button:not(:last-child)
+    {
+        margin: 0 0 .5em 0;
+    }
+    .container .countdownn
+    {
+        font-size: 7rem;
+    }
+    .timer .wrapper
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .select:not(:last-child)
+    {
+        margin: 0 0 15px 0;
+    }
+}
+@media screen and (max-width: 560px)
+{
+    .container
+    {
+        padding: 50px 30px;
+    }
+    .container .hours span
+    {
+        font-size: 5rem;
+    }
+    .container .hours .today
+    {
+        font-size: 1.5rem;
+    }
+    .stopwatchcont
+    {
+        padding: 60px 20px;
+    }
+    .container .stopwatch
+    {
+        font-size: 4.5rem;
+    }
+    .container .countdownn
+    {
+        font-size: 5.5rem;
+    }
+    .container .check
+    {
+        width: 20em;
+    }
+    .timer
+    {
+        padding: 70px 30px;
+    }
+}
+@media screen and (max-width: 400px)
+{
+    .container
+    {
+        padding: 30px 10px;
+    }
+    .container .hours span
+    {
+        font-size: 5rem;
+    }
+    .container .hours .today
+    {
+        font-size: 1.7rem;
+    }
+    .container .stopwatch
+    {
+        font-size: 3.5rem;
+    }
+    .container .btn button
+    {
+        font-size: 1.5em;
+    }
+    .timer
+    {
+        padding: 70px 0px 70px 0px;
+    }
+    .container .countdownn
+    {
+        font-size: 4.3rem;
+    }
+    .container .check
+    {
+        width: 17em;
+    }
+    h3
+    {
+        font-size: 1em;
+    }
+    .container .check label::after
+    {
+        font-size: 1rem;
+    }
+    .container .check input:checked ~label::after
+    {
+        font-size: 1rem;
+    }
+    .container .btn button
+    {
+        font-size: 1.3em;
+    }
+    .select:not(:last-child)
+    {
+        margin: 0 0 8px 0;
+    }
+}
